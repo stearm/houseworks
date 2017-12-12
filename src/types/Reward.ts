@@ -1,0 +1,6 @@
+export enum Reward {
+  BEER,
+  BREAKFAST,
+  COOKING_DINNER,
+  SOMETHING_DESIRED
+}

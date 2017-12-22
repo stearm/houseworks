@@ -15,7 +15,7 @@ const div: StyledFunction<DraggableWrapperProps & React.HTMLProps<HTMLDivElement
 
 const DraggableWrapper = div`
   position: absolute;
-  z-index: 9999;
+  z-index: 5000;
   width: 100%;
   height: 100%;
   background-color: ${props => props.top === initialPosition ? 'rgba(125, 180, 181, 0)' : 'rgba(125, 180, 181, 1)'};
@@ -25,7 +25,7 @@ const DraggableWrapper = div`
 `;
 
 const ArrowWrapper = styled.div`
-  background-color: #7DB4B5;
+  background-color: ${props => props.theme.bgColor};
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   position: absolute;

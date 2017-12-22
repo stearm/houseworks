@@ -17,8 +17,14 @@ const List = styled.div`
   }
 `;
 
-export default ({ children }: { children: Array<React.ReactNode> }) => (
+interface Props {
+  children: Array<React.ReactNode>;
+}
+
+const CardList: React.SFC<Props> = ({ children }) => (
   <List>
     {children}
   </List>
 );
+
+export default CardList;

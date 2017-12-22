@@ -1,9 +1,10 @@
 import * as React from 'react';
 import styled, { StyledFunction } from 'styled-components';
 import * as moment from 'moment';
-import ThemeProviderWrapper from '../ThemeProviderWrapper';
 import Title from './Title';
 import { Task } from '../types/Task';
+
+const check = require('../assets/check.svg');
 
 const CardWrapper = styled.div`
   box-sizing: border-box;
@@ -76,10 +77,28 @@ const UserSelection = userDiv`
   }
 `;
 
-const Photo = styled.div`
-  border: solid 2px;
+interface PhotoProps {
+  selected?: boolean;
+}
+
+const photoDiv: StyledFunction<PhotoProps & React.HTMLProps<HTMLDivElement>> = styled.div;
+
+const Photo = photoDiv`
+  border: ${props => props.selected ? 'solid 3px #8ab9f3' : 'solid 2px'};
   padding: 5px;
   border-radius: 50%;
+`;
+
+const CheckWrapper = styled.div`
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  width: 15px;
+  
+  & > img {
+    max-width:100%;
+    max-height:100%;
+  }
 `;
 
 interface Props {
@@ -102,30 +121,40 @@ export default class Card extends React.Component<Props, State> {
   render() {
     const task = this.props.task;
     return (
-      <ThemeProviderWrapper>
-        <CardWrapper onClick={() => this.setState({clicked: !this.state.clicked})}>
-          <Title>
-            {task.title}
-          </Title>
-          <div>
-            {task.description}
-          </div>
-          <DateWrapper createdAt={task.createdAt}>
-            Created at {moment.unix(task.createdAt).format('DD-MM-YYYY HH:MM')}
-          </DateWrapper>
-          {
-            task.assignee
-              ? <div style={{position: 'absolute', right: 5, bottom: 5}}>
-                  <Photo>AA</Photo>
-                </div>
-              : null
-          }
-          <UserSelection clicked={this.state.clicked}>
-            <Photo>AA</Photo>
-            <Photo>BB</Photo>
-          </UserSelection>
-        </CardWrapper>
-      </ThemeProviderWrapper>
+      <CardWrapper
+        onClick={() => {
+          this.setState({clicked: !this.state.clicked});
+        }}
+      >
+        <CheckWrapper
+          onClick={(e) => {
+            e.stopPropagation();
+            // do something
+          }}
+        >
+          <img src={check} />
+        </CheckWrapper>
+        <Title>
+          {task.title}
+        </Title>
+        <div>
+          {task.description}
+        </div>
+        <DateWrapper createdAt={task.createdAt}>
+          Created at {moment.unix(task.createdAt).format('DD-MM-YYYY HH:MM')}
+        </DateWrapper>
+        {
+          task.assignee
+            ? <div style={{position: 'absolute', right: 5, bottom: 5}}>
+                <Photo>AA</Photo>
+              </div>
+            : null
+        }
+        <UserSelection clicked={this.state.clicked}>
+          <Photo selected={true}>AA</Photo>
+          <Photo>BB</Photo>
+        </UserSelection>
+      </CardWrapper>
     );
   }
 

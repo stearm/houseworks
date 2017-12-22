@@ -14,6 +14,7 @@ import TasksPanel from '../components/TasksPanel';
 import Draggable from '../components/Draggable';
 import Swipable from '../components/Swipable';
 import Stats from '../components/Stats';
+import App from '../App';
 
 const tasks: Array<Task> = [
   {
@@ -26,6 +27,10 @@ const tasks: Array<Task> = [
     title: 'Task2',
     description: 'Descrizione lunghissima task 2',
     createdAt: moment().unix(),
+    assignee: {
+      id: 1,
+      name: 'Stefano'
+    },
     type: TaskType.WASH_DISHES
   },
   {
@@ -64,4 +69,7 @@ storiesOf('HouseWork', module)
         <TasksPanel title="My tasks" tasks={tasks}/>
       </Swipable>
     </div>
+  ))
+  .add('App', () => (
+    <App />
   ));

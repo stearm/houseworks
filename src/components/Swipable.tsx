@@ -1,7 +1,11 @@
 import * as React from 'react';
 import Slider from 'react-slick';
 
-export default ({children}: { children: React.ReactNode | Array<React.ReactNode> }) => {
+interface Props {
+  children: React.ReactNode | Array<React.ReactNode>;
+}
+
+const Swipable: React.SFC<Props> = ({children}) => {
   return (
     <div style={{height: '100%'}}>
       {
@@ -21,3 +25,5 @@ export default ({children}: { children: React.ReactNode | Array<React.ReactNode>
     </div>
   );
 };
+
+export default Swipable;

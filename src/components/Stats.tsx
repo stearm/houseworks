@@ -9,6 +9,7 @@ const StatsWrapper = styled.div`
   align-items: center;
   height: 100%;
   justify-content: center;
+  z-index: 9999;
 `;
 
 const Data = styled.div`
@@ -27,13 +28,7 @@ const Graph = styled.div`
   font-weight: bold;
 `;
 
-// const Photo = styled.div`
-//   border: solid 2px;
-//   padding: 5px;
-//   border-radius: 50%;
-// `;
-
-export default () => (
+const Stats: React.SFC = () => (
   <Draggable>
     <StatsWrapper>
       <Data>
@@ -60,3 +55,5 @@ export default () => (
     </StatsWrapper>
   </Draggable>
 );
+
+export default Stats;

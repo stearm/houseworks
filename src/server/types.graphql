@@ -1,0 +1,30 @@
+type Effort @model {
+  id: ID! @isUnique
+  value: Int!
+  reward: Reward
+  tasks: [Task!]! @relation(name: "TaskEffort")
+}
+
+type Task @model {
+  id: ID! @isUnique
+  title: String
+  description: String
+  assignee: User! @relation(name: "UserTasks")
+  effort: Effort! @relation(name: "TaskEffort")
+}
+
+type User @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  tasks: [Task!]! @relation(name: "UserTasks")
+  email: String! @isUnique
+  password: String!
+}
+
+enum Reward {
+  BEER
+  BREAKFAST
+  DINNER
+}

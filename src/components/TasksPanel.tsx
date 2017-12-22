@@ -12,7 +12,12 @@ const TaskPanelWrapper = styled.div`
   }
 `;
 
-const TasksPanel = ({title, tasks}: { title: string, tasks: Array<Task> }) => (
+interface Props {
+  title: string;
+  tasks: Array<Task>;
+}
+
+const TasksPanel: React.SFC<Props> = ({title, tasks}) => (
   <TaskPanelWrapper>
     <Title size={25} color={'#37656b'}>
       {title}

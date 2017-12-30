@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { StyledFunction } from 'styled-components';
 import * as moment from 'moment';
 import Title from './Title';
+import Photo from './Photo';
 import { Task } from '../types/Task';
 
 const check = require('../assets/check.svg');
@@ -77,18 +78,6 @@ const UserSelection = userDiv`
   }
 `;
 
-interface PhotoProps {
-  selected?: boolean;
-}
-
-const photoDiv: StyledFunction<PhotoProps & React.HTMLProps<HTMLDivElement>> = styled.div;
-
-const Photo = photoDiv`
-  border: ${props => props.selected ? 'solid 3px #8ab9f3' : 'solid 2px'};
-  padding: 5px;
-  border-radius: 50%;
-`;
-
 const CheckWrapper = styled.div`
   position: absolute;
   top: 2px;
@@ -135,7 +124,7 @@ export default class Card extends React.Component<Props, State> {
           <img src={check} />
         </CheckWrapper>
         <Title>
-          {task.title}
+          {task.type.title}
         </Title>
         <div>
           {task.description}

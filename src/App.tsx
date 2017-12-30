@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 import './App.css';
+import 'react-select/dist/react-select.css';
 
 import client from './client';
 import ThemeProviderWrapper from './ThemeProviderWrapper';
 import ApolloProvider from 'react-apollo/ApolloProvider';
 import LoginPageContainer from './apollo-containers/LoginPageContainer';
 import TasksPageContainer from './apollo-containers/TasksPageContainer';
-import { Redirect } from 'react-router';
 
 class App extends React.Component {
   render() {
@@ -22,7 +23,9 @@ class App extends React.Component {
                 path="/"
                 component={() => {
                   if (localStorage.getItem('graphcoolToken')) {
-                    return <TasksPageContainer />;
+                    return (
+                      <TasksPageContainer />
+                    );
                   }
                   return <Redirect to="/login" />;
                 }}

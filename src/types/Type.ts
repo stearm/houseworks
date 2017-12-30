@@ -1,8 +1,8 @@
-export enum TaskType {
-  WASH_DISHES = 4,
-  WASHING_MACHINE = 2,
-  GARBAGE = 1,
-  BED = 3,
-  IRON = 5,
-  LAUNDRY = 3
+import { Reward } from './Reward';
+
+export interface TaskType {
+  id: number;
+  title: string;
+  effort: number;
+  reward: Reward;
 }

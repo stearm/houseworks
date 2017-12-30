@@ -9,35 +9,49 @@ import 'slick-carousel/slick/slick-theme.css';
 import Card from '../components/Card';
 import CardList from '../components/CardList';
 import { Task } from '../types/Task';
-import { TaskType } from '../types/Type';
+import { Reward } from '../types/Reward';
 import TasksPanel from '../components/TasksPanel';
 import Draggable from '../components/Draggable';
 import Swipable from '../components/Swipable';
 import Stats from '../components/Stats';
+import AddTaskPanel from '../components/AddTaskPanel';
 import App from '../App';
+import TypeSelect from '../components/TypeSelect';
 
 const tasks: Array<Task> = [
   {
-    title: 'Task1',
     description: 'Descrizione lunghissima task Ciaone, meglio farlo ASAP, Lorem ipsum blablablabla',
     createdAt: moment().unix(),
-    type: TaskType.BED
+    type: {
+      id: 1,
+      title: 'ciaone',
+      effort: 2,
+      reward: Reward.BEER
+    }
   },
   {
-    title: 'Task2',
     description: 'Descrizione lunghissima task 2',
     createdAt: moment().unix(),
     assignee: {
-      id: 1,
+      email: 'ste@house.works',
       name: 'Stefano'
     },
-    type: TaskType.WASH_DISHES
+    type: {
+      id: 1,
+      title: 'ciaone',
+      effort: 2,
+      reward: Reward.BEER
+    }
   },
   {
-    title: 'Task3',
     description: 'Descrizione lunghissima task 3',
     createdAt: moment().unix(),
-    type: TaskType.GARBAGE
+    type: {
+      id: 1,
+      title: 'ciaone',
+      effort: 2,
+      reward: Reward.BEER
+    }
   }
 ];
 
@@ -70,6 +84,8 @@ storiesOf('HouseWork', module)
       </Swipable>
     </div>
   ))
+  .add('AddTaskPanel', () => <AddTaskPanel updateShow={() => console.log('ciaone')}/>)
+  .add('EffortSelect', () => <TypeSelect types={[]} />)
   .add('App', () => (
     <App />
   ));

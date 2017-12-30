@@ -1,16 +1,17 @@
-type Effort @model {
+type TaskType @model {
   id: ID! @isUnique
-  value: Int!
+  title: String!
+  effort: Int!
   reward: Reward
-  tasks: [Task!]! @relation(name: "TaskEffort")
+  task: [Task!]! @relation(name: "TaskTaskType")
 }
 
 type Task @model {
   id: ID! @isUnique
-  title: String
+  type: TaskType! @relation(name: "TaskTaskType")
   description: String
-  assignee: User! @relation(name: "UserTasks")
-  effort: Effort! @relation(name: "TaskEffort")
+  assignee: User @relation(name: "UserTasks")
+  status: Status
 }
 
 type User @model {
@@ -21,6 +22,11 @@ type User @model {
   tasks: [Task!]! @relation(name: "UserTasks")
   email: String! @isUnique
   password: String!
+}
+
+enum Status {
+  IN_PROGRESS
+  DONE
 }
 
 enum Reward {

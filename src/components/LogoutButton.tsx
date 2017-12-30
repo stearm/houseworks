@@ -1,27 +1,24 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import Button from './Button';
+import SmallButton from './SmallButton';
 
-const StyledLogoutButton = styled(Button)`
-  background-color: ${props => props.theme.bgColor};
+const LogoutSmallButton = styled(SmallButton)`
   position: absolute;
-  font-size: 10px;
-  padding: 5px;
-  top: 5px;
+  top: 15px;
   right: 5px;
   z-index: 5000;
 `;
 
 const LogoutButton = () => (
-  <StyledLogoutButton
+  <LogoutSmallButton
     onClick={(e) => {
       localStorage.removeItem('graphcoolToken');
       window.location.reload();
     }}
   >
     Logout
-  </StyledLogoutButton>
+  </LogoutSmallButton>
 );
 
 export default LogoutButton;

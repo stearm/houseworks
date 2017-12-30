@@ -51,22 +51,25 @@ permissions:
     authenticated: true
   - operation: Task.update
     authenticated: true
-  
-  - operation: Effort.read
+
+  - operation: TaskType.read
     authenticated: true
-  - operation: Effort.update
+  - operation: TaskType.update
     authenticated: true
-  - operation: Effort.create
+  - operation: TaskType.create
     authenticated: true
 
-  # - operation: "*"
+  - operation: TaskTaskType.connect
+    authenticated: true
+  - operation: UserTasks.connect
+    authenticated: true
+
   - operation: User.read
     authenticated: true
     fields:
       - email
       - name
-
-
+      
 # Your root tokens used for functions to get full access to the API
 # Read more here:
 # https://www.graph.cool/docs/reference/auth/authentication/authentication-tokens-eip7ahqu5o

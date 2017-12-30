@@ -10,7 +10,7 @@ const home = require('../assets/home.svg');
 const loader = require('../assets/loader.svg');
 
 const LoginPageWrapper = styled.div`
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +38,10 @@ const Form = styled.form`
   border-radius: 10px;
   width: 25%;
   height: 25%;
+
+  & > input:(:first-child) {
+    margin-top: 6px;
+  }
   
   & > div:not(:last-child) {
     margin-bottom: 4px;
@@ -106,7 +110,6 @@ const LoginPage = ({
         required={true}
       />
       <Button style={{ margin: 2 }} type="submit">Login</Button>
-
     </Form>
   </LoginPageWrapper>
 );

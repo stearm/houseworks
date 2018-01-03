@@ -7,9 +7,8 @@ import TasksPage from '../pages/TasksPage';
 import Overlay from '../components/Overlay';
 
 import { Task } from '../types/Task';
-import { User } from '../types/User';
 
-import WithUsers from '../apollo-containers/WithUsers';
+import UsersProvider from './UsersProvider';
 
 const loader = require('../assets/loader.svg');
 
@@ -55,11 +54,9 @@ const TasksPageContainer: React.SFC = (
   const tasks = _.groupBy(allTasksQuery.allTasks, 'assignee.email');
 
   return (
-    <WithUsers>
-      {(users: Array<User>) => (
-        <TasksPage tasks={tasks} users={users} />
-      )}
-    </WithUsers>
+    <UsersProvider>
+      <TasksPage tasks={tasks} />
+    </UsersProvider>
   );
 };
 

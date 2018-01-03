@@ -119,6 +119,7 @@ export default class Card extends React.Component<Props, State> {
 
   render() {
     const task = this.props.task;
+    
     return (
       <CardWrapper
         onClick={() => {
@@ -134,7 +135,7 @@ export default class Card extends React.Component<Props, State> {
           <img src={check} />
         </CheckWrapper>
         <Title>
-          {task.type.title}
+          {`${task.type.title} - ${task.type.effort}`}
         </Title>
         <div>
           {task.description}

@@ -1,13 +1,24 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import Slider from 'react-slick';
 
 interface Props {
   children: React.ReactNode | Array<React.ReactNode>;
 }
 
+const Wrapper = styled.div`
+  height: 100%;
+  margin-top: 30px;
+  margin-left: 5px;
+
+  @media (max-width: 768px) {
+    margin-left: 0px;
+  }
+`;
+
 const Swipable: React.SFC<Props> = ({children}) => {
   return (
-    <div style={{height: '100%', marginTop: 30}}>
+    <Wrapper>
       {
         window.innerWidth <= 768
           ? (
@@ -22,7 +33,7 @@ const Swipable: React.SFC<Props> = ({children}) => {
           )
           : children
       }
-    </div>
+    </Wrapper>
   );
 };
 

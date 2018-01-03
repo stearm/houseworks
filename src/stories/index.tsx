@@ -16,7 +16,6 @@ import Swipable from '../components/Swipable';
 import Stats from '../components/Stats';
 import AddTaskPanel from '../components/AddTaskPanel';
 import App from '../App';
-import TypeSelect from '../components/TypeSelect';
 
 const tasks: Array<Task> = [
   {
@@ -93,7 +92,6 @@ storiesOf('HouseWork', module)
     </div>
   ))
   .add('AddTaskPanel', () => <AddTaskPanel updateShow={() => console.log('ciaone')}/>)
-  .add('EffortSelect', () => <TypeSelect types={[]} />)
   .add('App', () => (
     <App />
   ));

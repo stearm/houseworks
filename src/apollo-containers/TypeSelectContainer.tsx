@@ -23,13 +23,21 @@ interface AllEffortsQuery {
 }
 
 const EffortSelectContainer: React.SFC = 
-  ({ children, allTypesQuery }: {children: any, allTypesQuery: AllEffortsQuery}) => {
+  (
+    { children, allTypesQuery, changeType, type }:
+    { children: any, allTypesQuery: AllEffortsQuery, changeType: (type: TaskType) => any, type: TaskType }
+  ) => {
 
     if (allTypesQuery.loading) {
       return <span>'Fetching efforts...'</span>;
     }
 
-    return <TypeSelect types={allTypesQuery.allTaskTypes} />;
+    return <TypeSelect types={allTypesQuery.allTaskTypes} changeType={changeType} selectedType={type} />;
   };
 
-export default graphql(ALL_TYPES, { name: 'allTypesQuery'})(EffortSelectContainer);
+interface TypeSelectGraphQLWrapperProps {
+  type: TaskType | null;
+  changeType: (type: TaskType) => any;
+}
+
+export default graphql<any, TypeSelectGraphQLWrapperProps>(ALL_TYPES, { name: 'allTypesQuery'})(EffortSelectContainer);

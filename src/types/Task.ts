@@ -5,5 +5,5 @@ export interface Task {
   type: TaskType;
   createdAt: number;
   description: string;
-  assignee?: User;
+  assignee: User;
 }

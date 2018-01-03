@@ -7,13 +7,13 @@ interface Props {
 
 const Swipable: React.SFC<Props> = ({children}) => {
   return (
-    <div style={{height: '100%'}}>
+    <div style={{height: '100%', marginTop: 30}}>
       {
         window.innerWidth <= 768
           ? (
             <Slider
               responsive={[{breakpoint: 768, settings: {slidesToShow: 1}}]}
-              initialSlide={1}
+              initialSlide={0}
               arrows={false}
               infinite={false}
             >

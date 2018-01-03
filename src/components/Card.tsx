@@ -1,8 +1,12 @@
 import * as React from 'react';
 import styled, { StyledFunction } from 'styled-components';
 import * as moment from 'moment';
+import * as PropTypes from 'prop-types';
+
 import Title from './Title';
 import Photo from './Photo';
+
+import { User } from '../types/User';
 import { Task } from '../types/Task';
 
 const check = require('../assets/check.svg');
@@ -100,6 +104,12 @@ interface State {
 
 export default class Card extends React.Component<Props, State> {
 
+  static contextTypes = {
+    users: PropTypes.array
+  };
+
+  context: { 'users': Array<User> };
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -132,16 +142,15 @@ export default class Card extends React.Component<Props, State> {
         <DateWrapper createdAt={task.createdAt}>
           Created at {moment.unix(task.createdAt).format('DD-MM-YYYY HH:MM')}
         </DateWrapper>
-        {
-          task.assignee
-            ? <div style={{position: 'absolute', right: 5, bottom: 5}}>
-                <Photo>AA</Photo>
-              </div>
-            : null
-        }
         <UserSelection clicked={this.state.clicked}>
-          <Photo selected={true}>AA</Photo>
-          <Photo>BB</Photo>
+          {this.context.users.map(user => (
+            <Photo
+              key={user.email}
+              selected={task.assignee.email === user.email}
+            >
+                {user.name.substring(0, 2).toUpperCase()}
+            </Photo>
+          ))}
         </UserSelection>
       </CardWrapper>
     );

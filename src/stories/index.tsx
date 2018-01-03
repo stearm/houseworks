@@ -22,6 +22,10 @@ const tasks: Array<Task> = [
   {
     description: 'Descrizione lunghissima task Ciaone, meglio farlo ASAP, Lorem ipsum blablablabla',
     createdAt: moment().unix(),
+    assignee: {
+      email: 'ste@house.works',
+      name: 'Stefano'
+    },
     type: {
       id: 1,
       title: 'ciaone',
@@ -46,6 +50,10 @@ const tasks: Array<Task> = [
   {
     description: 'Descrizione lunghissima task 3',
     createdAt: moment().unix(),
+    assignee: {
+      email: 'ste@house.works',
+      name: 'Stefano'
+    },
     type: {
       id: 1,
       title: 'ciaone',

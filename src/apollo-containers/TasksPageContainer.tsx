@@ -16,6 +16,7 @@ const ALL_TASKS = gql`
   query AllTasksQuery {
     allTasks {
       description
+      createdAt
       type {
         reward
         effort
@@ -52,6 +53,7 @@ const TasksPageContainer: React.SFC = (
   }
 
   const tasks = _.groupBy(allTasksQuery.allTasks, 'assignee.email');
+  console.log(tasks);
 
   return (
     <UsersProvider>

@@ -12,6 +12,7 @@ type Task @model {
   description: String
   assignee: User @relation(name: "UserTasks")
   status: Status
+  createdAt: DateTime!
 }
 
 type User @model {

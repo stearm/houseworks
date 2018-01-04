@@ -47,7 +47,7 @@ const DateWrapper = div`
   color: ${props => props.theme.bgColor};
   font-size: 12px;
   
-  animation: ${props => moment().unix() - props.createdAt >= 100 ? 'hurryup 1s infinite' : ''};
+  animation: ${props => moment().unix() - moment(props.createdAt).unix() >= 100 ? 'hurryup 1s infinite' : ''};
   @keyframes hurryup {
     0% { transform: rotate(0deg); }
     33% { transform: rotate(3deg); }
@@ -141,7 +141,7 @@ export default class Card extends React.Component<Props, State> {
           {task.description}
         </div>
         <DateWrapper createdAt={task.createdAt}>
-          Created at {moment.unix(task.createdAt).format('DD-MM-YYYY HH:MM')}
+          Created at {moment(task.createdAt).format('DD-MM-YYYY HH:MM')}
         </DateWrapper>
         <UserSelection clicked={this.state.clicked}>
           {this.context.users.map(user => (

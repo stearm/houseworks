@@ -77,5 +77,5 @@ class LoginPageContainer extends React.Component<Props, State> {
 export default graphql(
   AUTHENTICATE_EMAIL_USER,
   {name: 'authenticateUserMutation'}
-  )
+)
 (withRouter<RouteComponentProps<{}>, any>(LoginPageContainer));

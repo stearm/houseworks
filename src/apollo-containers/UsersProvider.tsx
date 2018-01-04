@@ -8,6 +8,7 @@ import { User } from '../types/User';
 const ALL_USERS = gql`
   query AllUsersQuery {
     allUsers {
+      id
       name
       email
     }

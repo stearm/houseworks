@@ -47,8 +47,8 @@ const InputDiv = styled.div`
 
 const Close = styled.div`
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 `;
 
@@ -59,7 +59,8 @@ const InsertButton = styled(Button) `
 `;
 
 interface Props {
-  updateShow: Function;
+  updateShow: () => any;
+  createTask: (description: string, assigneeId: string, typeId: string) => void;
 }
 
 interface State {
@@ -87,7 +88,15 @@ class AddTaskPanel extends React.Component<Props, State> {
 
   render() {
     return (
-      <Form>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const { description, user, type } = this.state;
+          if (description && description !== '' && type && user) {
+            this.props.createTask(description, user.id, type.id);
+          }
+        }}
+      >
         <Close onClick={e => this.props.updateShow()}><img src={cross} /></Close>
         <Wrapper>
           <InputDiv>

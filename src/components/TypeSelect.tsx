@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Select from 'react-select';
+import Select, { Option, OptionValues } from 'react-select';
+import * as _ from 'lodash';
 
 import { TaskType } from '../types/Type';
 
@@ -16,9 +17,11 @@ class TypeSelect extends React.Component<Props, {}> {
 
     return (
       <Select
-        onChange={(type: TaskType) => changeType(type)}
+        onChange={(type: Option<OptionValues>) => {
+          changeType(_.find(types, t => t.id === type.value)!);
+        }}
         searchable={false}
-        value={selectedType}
+        value={selectedType ? selectedType.id : ''}
         options={types.map(type => ({value: type.id, label: `${type.title} - ${type.effort}`}))}
       />
     );  

@@ -7,7 +7,7 @@ import { Task } from '../types/Task';
 import { User } from '../types/User';
 
 import TasksPanel from '../components/TasksPanel';
-import AddTaskPanel from '../components/AddTaskPanel';
+import AddTaskPanelContainer from '../apollo-containers/AddTaskPanelContainer';
 import Stats from '../components/Stats';
 import Swipable from '../components/Swipable';
 import LogoutButton from '../components/LogoutButton';
@@ -16,7 +16,7 @@ import SmallButton from '../components/SmallButton';
 const AddTaskButton = styled(SmallButton)`
   position: absolute;
   top: 15px;
-  right: 58px;
+  right: 65px;
   z-index: 5000;
 `;
 
@@ -71,7 +71,7 @@ class TasksPage extends React.Component<Props, State> {
         <Stats />
         {
           showNewTaskPanel
-            ? <AddTaskPanel updateShow={this.updateShow}/>
+            ? <AddTaskPanelContainer updateShow={this.updateShow}/>
             : null
         }
         <Swipable>

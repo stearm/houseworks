@@ -22,11 +22,12 @@ const tasks: Array<Task> = [
     description: 'Descrizione lunghissima task Ciaone, meglio farlo ASAP, Lorem ipsum blablablabla',
     createdAt: moment().unix(),
     assignee: {
+      id: '1234',
       email: 'ste@house.works',
       name: 'Stefano'
     },
     type: {
-      id: 1,
+      id: '1234',
       title: 'ciaone',
       effort: 2,
       reward: Reward.BEER
@@ -36,11 +37,12 @@ const tasks: Array<Task> = [
     description: 'Descrizione lunghissima task 2',
     createdAt: moment().unix(),
     assignee: {
+      id: '1234',
       email: 'ste@house.works',
       name: 'Stefano'
     },
     type: {
-      id: 1,
+      id: '1234',
       title: 'ciaone',
       effort: 2,
       reward: Reward.BEER
@@ -50,11 +52,12 @@ const tasks: Array<Task> = [
     description: 'Descrizione lunghissima task 3',
     createdAt: moment().unix(),
     assignee: {
+      id: '1234',
       email: 'ste@house.works',
       name: 'Stefano'
     },
     type: {
-      id: 1,
+      id: '1234',
       title: 'ciaone',
       effort: 2,
       reward: Reward.BEER
@@ -91,7 +94,12 @@ storiesOf('HouseWork', module)
       </Swipable>
     </div>
   ))
-  .add('AddTaskPanel', () => <AddTaskPanel updateShow={() => console.log('ciaone')}/>)
+  .add('AddTaskPanel', () => (
+    <AddTaskPanel
+      updateShow={() => console.log('ciaone')}
+      createTask={(description: string, assigneeId: string, typeId: string) => Promise.resolve('123')}
+    />
+  ))
   .add('App', () => (
     <App />
   ));

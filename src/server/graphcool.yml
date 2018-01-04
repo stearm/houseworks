@@ -67,6 +67,7 @@ permissions:
   - operation: User.read
     authenticated: true
     fields:
+      - id
       - email
       - name
       

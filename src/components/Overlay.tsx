@@ -6,6 +6,7 @@ interface OverlayProps {
 const div: StyledFunction<OverlayProps & React.HTMLProps<HTMLDivElement>> = styled.div;
 
 const Overlay = div`
+  z-index: 1000000;
   position: absolute;
   top: 0;
   left: 0;

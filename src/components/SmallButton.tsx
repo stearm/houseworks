@@ -4,7 +4,7 @@ import Button from './Button';
 
 const SmallButton = styled(Button)`
   background-color: ${props => props.theme.bgColor};
-  font-size: 10px;
+  font-size: 12px;
   padding: 5px;
 `;
 
